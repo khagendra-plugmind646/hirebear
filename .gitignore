@@ -33,6 +33,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# private files (should be in your storage, not git)
-/private-files
+# private files (currently committing for deployment)
+# /private-files
 .env*
