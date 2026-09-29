@@ -29,7 +29,7 @@ async function main() {
   const existingPurchases = await Purchase.find({ orderId: { $in: orderIds } }).lean();
   const existingOrderIds = new Set(existingPurchases.map(p => p.orderId.toString()));
 
-  const ordersWithoutPurchases = allOrders.filter(order => !existingOrderIds.has(order._id.toString()));
+  const ordersWithoutPurchases = allOrders.filter((order: any) => !existingOrderIds.has(order._id.toString()));
 
   console.log(`Found ${ordersWithoutPurchases.length} orders without purchases`);
 

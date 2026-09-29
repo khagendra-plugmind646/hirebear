@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import BearIcon from "@/components/BearIcon";
+import { Suspense } from "react";
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter();
   const params = useSearchParams();
   const referralCode = params.get("ref") || undefined;
@@ -62,5 +63,13 @@ export default function SignupPage() {
         </p>
       </form>
     </main>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div style={{ display: "flex", justifyContent: "center", padding: "80px 24px" }}>Loading...</div>}>
+      <SignupForm />
+    </Suspense>
   );
 }

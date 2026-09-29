@@ -35,3 +35,4 @@ next-env.d.ts
 
 # private files (should be in your storage, not git)
 /private-files
+.env*

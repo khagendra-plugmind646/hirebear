@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("order_id");
   const [status, setStatus] = useState<"loading" | "success" | "confirming">("loading");
@@ -70,5 +71,13 @@ export default function PaymentSuccessPage() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={<div style={{ display: "flex", justifyContent: "center", padding: "80px 24px" }}>Loading...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }

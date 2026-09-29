@@ -31,7 +31,6 @@ export default function RazorpayCheckoutPage() {
 
     const { orderId, razorpayOrderId, amount, currency, keyId } = await res.json();
 
-    // @ts-expect-error — loaded via the Razorpay SDK script tag below
     const options = {
       key: keyId,
       amount: amount,
@@ -53,8 +52,7 @@ export default function RazorpayCheckoutPage() {
       },
     };
 
-    // @ts-expect-error — loaded via the Razorpay SDK script tag below
-    const rzp = new window.Razorpay(options);
+    const rzp = new (window as any).Razorpay(options);
     rzp.on("payment.failed", function (response: any) {
       router.push(`/payment/failed?order_id=${orderId}`);
     });
