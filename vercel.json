@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NEXTAUTH_URL": {
+      "description": "The URL of your deployed site",
+      "value": "https://your-domain.vercel.app"
+    },
+    "APP_URL": {
+      "description": "The URL of your deployed site",
+      "value": "https://your-domain.vercel.app"
+    }
+  }
+}
